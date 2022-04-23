@@ -1,0 +1,22 @@
+#!/bin/bash
+# Format example: ./crawl -n 4 https://www.amazon.com/
+
+params="$@" 
+declare -a arrVar=()
+
+
+for value in "$@"
+  do
+      arrVar+=("$value")
+  done
+
+len=${#arrVar[@]}
+
+if [ $len -eq 3 ]
+then
+    echo "Starting..."
+    eval node src/setup.js "${arrVar[@]}" 
+    else
+    echo -e "\n Error: invalid format. \n 
+Try the following format: './crawl -n 4 https://www.site-you-want-to-crawl.com/' \n"
+fi
